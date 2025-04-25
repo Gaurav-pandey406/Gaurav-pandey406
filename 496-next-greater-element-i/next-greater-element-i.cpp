@@ -1,32 +1,35 @@
 class Solution {
 public:
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
-        vector<int> result;
+        int n = nums2.size();
+        vector<int> nextGreater(n, -1);  
+        stack<int> st;
 
-        for (int i = 0; i < nums1.size(); ++i) {
-            int num = nums1[i];
-            int indexInNums2 = -1;
-
-        
-            for (int j = 0; j < nums2.size(); ++j) {
-                if (nums2[j] == num) {
-                    indexInNums2 = j;
-                    break;
-                }
+        // Traverse nums2 from right to left
+        for (int i = n - 1; i >= 0; --i) {
+            while (!st.empty() && st.top() <= nums2[i]) {
+                st.pop();
             }
 
-            
-            int nextGreater = -1;
-            for (int j = indexInNums2 + 1; j < nums2.size(); ++j) {
-                if (nums2[j] > num) {
-                    nextGreater = nums2[j];
-                    break;
-                }
+            if (!st.empty()) {
+                nextGreater[i] = st.top();
             }
 
-            result.push_back(nextGreater);
+            st.push(nums2[i]);
         }
 
-        return result; 
+        
+        vector<int> result;
+        for (int num : nums1) {
+            
+            for (int i = 0; i < n; ++i) {
+                if (nums2[i] == num) {
+                    result.push_back(nextGreater[i]);
+                    break;
+                }
+            }
+        }
+
+        return result;
     }
 };
