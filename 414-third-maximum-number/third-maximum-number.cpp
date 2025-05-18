@@ -1,9 +1,9 @@
 class Solution {
 public:
     int thirdMax(vector<int>& nums) {
-    long first = LONG_MIN;  // Largest
-    long second = LONG_MIN; // Second largest
-    long third = LONG_MIN;  // Third largest
+    long first = LONG_MIN; 
+    long second = LONG_MIN; 
+    long third = LONG_MIN;  
 
     for (int i = 0; i < nums.size(); i++) {
         int num = nums[i]; 
