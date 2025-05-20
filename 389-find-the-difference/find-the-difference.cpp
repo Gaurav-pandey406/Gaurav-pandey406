@@ -1,21 +1,17 @@
 class Solution {
 public:
     char findTheDifference(string s, string t) {
-        unordered_map<char, int> m;
-        
-    
-        for(char c : s) {
-            m[c]++;
-        }
-        
-        
-        for(char c : t) {
-            if(m.find(c) == m.end() || m[c] == 0) {
-                return c;  
+
+        sort(s.begin() , s.end());
+        sort(t.begin() , t.end());
+
+        for(int i = 0; i<s.size(); i++){
+            if(s[i] != t[i]){
+                return t[i];
             }
-            m[c]--; 
         }
+
+        return t.back();
         
-        return ' ';
     }
 };
