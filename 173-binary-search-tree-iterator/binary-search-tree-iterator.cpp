@@ -26,15 +26,9 @@ public:
         return current->val; 
     }
     
-    // Checks if there are more elements to iterate
+    
     bool hasNext() {
-        return !myStack.empty(); // True if stack is not empty
+        return !myStack.empty();
     }
 };
 
-/**
- * How to use the BSTIterator:
- * BSTIterator* obj = new BSTIterator(root);
- * int next_val = obj->next(); // Gets next smallest element
- * bool has_next = obj->hasNext(); // Checks if more elements exist
- */
