@@ -14,7 +14,9 @@ public:
                 }
             }
             
-            if (match) return i;
+            if (match) {
+                return i;
+            }
         }
         
         return -1;
